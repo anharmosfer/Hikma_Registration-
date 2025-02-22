@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>استمارة طلب تسجيل</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style1.css" />
+  
+</head>
+<body>
+    
+        <!-- header
+        <div class="header">
+            <img src="images/logo.png" alt="جامعة الحكمة" />
+        </div>
+         /header -->
+
+
+         <!-- main title -->
+         <div>
+            <h2 class="form-title">استمارة طلب تسجيل</h2>
+        </div>
+        <!-- /main title -->
+
+        <!-- container -->
+        <div class="container">
+
+            <!-- sub-title -->
+            <div class="sub-title">
+                <h4>
+                  قم بتعبئة كافة البيانات المطلوبة كما ورد بالنص في إستمارة الثانوية
+                  العامة
+                </h4>
+            </div>
+            <div class="progress">
+                <div class="progress-bar" id="progressBar">0%</</div>
+            </div>
+            <!-- sub-title -->
+
+            <!-- registration-form -->
+            <form id="registration-form">
+                <!-- first row -->
+                
+                 <!-- /first row -->
+
+                 <div class="tabs">
+              
+                  <input type="radio" id="tab1" name="tab-control" checked>
+                  <input type="radio" id="tab2" name="tab-control">
+                  <input type="radio" id="tab3" name="tab-control">  
+                  
+
+<!------------------------------------------------------------------------->
+
+                  <div class="template-demo d-flex flex-row-reverse flex-wrap">
+                    <ul>
+                      <li title="Personal Information">
+                        <label for="tab1" role="button">
+                          <i class="fa fa-info-circle" aria-hidden="true"></i>
+                          <br><span>البيانات الشخصية</span>
+                        </label>
+                      </li>
+                      <li title="Education Level"><label for="tab2" role="button">
+                        <i class="fa fa-address-card" aria-hidden="true"></i>
+                        <br><span>بيانات المؤهل السابق</span>
+                      </label>
+                      </li>
+                      <li title="Attendance"><label for="tab3" role="button">
+                        <i class="fa fa-check-square" aria-hidden="true"></i>
+                        <br><span>بيانات الهوية</span>
+                      </label>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div class="slider">
+                    <div class="indicator"></div>
+                  </div>
+
+            <div class="content">
+              <section>
+                <!-- second row  البيانات الشخصية -->
+                <div class="progress-container">
+                  <label for="previous_qualification" class="personal-data">
+                    <p>البيانات  الشخصية</p>
+                  </label>
+                      <!-- inputs --> 
+                      <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">الاسم بالعربي</label>
+                                <input
+                                    type="text"
+                                    id="name"
+                                    name="name"
+                                    required
+                                    onchange="updateProgress()"
+                                />
+                            </div>
+                            <div class="form-group">
+                              <label for="name">Name</label>
+                              <input
+                                  type="text"
+                                  id="name"
+                                  name="name"
+                                  required
+                                  onchange="updateProgress()"
+                              />
+                          </div>
+                      </div>
+
+                            <div class="form-row">
+                            <div class="form-group">
+                                <label>الجنس</label>
+                                <div class="gender-options">
+                                    <label for="male">
+                                        <input type="radio" id="male" name="gender" value="male">
+                                        ذكر
+                                    </label>
+                                    <label for="female">
+                                        <input type="radio" id="female" name="gender" value="female">
+                                        أنثى
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="nationality">الجنسية</label>
+                                <select id="nationality" name="nationality" onchange="updateProgress()">
+                                    <option value="" disabled selected>اختر الجنسية</option>
+                                    <option value="Yemeni">يمني</option>
+                                </select>
+                            </div>
+                            </div>
+                        
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="birth_place">مكان الميلاد</label>
+                                    <select id="birth_place" name="birth_place" onchange="updateProgress()">
+                                        <option value="" disabled selected>اختر مكان الميلاد</option>
+                                        <option value="">صنعاء</option>
+                                        <option value="">تعز</option>
+                                        <option value="">الحديدة</option>
+                                        <option value="">حضرموت</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="birth_date">تاريخ الميلاد</label>
+                                    <input type="date" id="birth_date" name="birth_date" required onchange="updateProgress()"/>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                <label for="current_address">العنوان الحالي</label>
+                                <input
+                                    type="text"
+                                    id="current_address"
+                                    name="current_address"
+                                    required
+                                />
+                                </div>
+                                <div class="form-group">
+                                <label for="student_phone">جوال الطالب</label>
+                                <input
+                                    type="tel"
+                                    id="student_phone"
+                                    name="student_phone"
+                                    required
+                                />
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                <label for="guardian_phone">جوال ولي الأمر</label>
+                                <input
+                                    type="tel"
+                                    id="guardian_phone"
+                                    name="guardian_phone"
+                                    required
+                                />
+                                </div>
+                                <div class="form-group">
+                                <label for="whatsapp">تلفونات اخرى </label>
+                                <input type="tel" id="whatsapp" name="whatsapp" required />
+                                </div>
+                            </div>
+                      <!-- /inputs -->
+                  
+                </div>
+
+              </section>
+                <!-- /second row -->
+
+                <section>
+                <!-- third row بيانات المؤهل السابق -->
+                <div class="progress-container">
+                <label for="previous_qualification"class="personal-data">
+                    <p>بيانات المؤهل السابق</p>
+                </label>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="previous_qualification">القسم</label>
+                    <select id="previous_qualification" name="previous_qualification">
+                      <option value="Scientific Section">العلمي</option>
+                      <option value="Literary Section">الأدبي</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="school_name">مكان الحصول عليه مدرسة:</label>
+                    <input type="text" id="school_name" name="school_name" required />
+                  </div>
+                  <div class="form-group">
+                    <label for="qualification_year">العام الدراسي</label>
+                    <select id="qualification_year" name="qualification_year">
+                      <option value="">2023-2022</option>
+                      <option value="">2022-2021</option>
+                      <option value="">2021-2020</option>
+                      <option value="">2020-2019</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="qualification_score">المجموع</label>
+                    <input
+                      type="text"
+                      id="qualification_score"
+                      name="qualification_score"
+                      required
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="qualification_average">النسبة المئوية</label>
+                    <input
+                      type="text"
+                      id="qualification_average"
+                      name="qualification_average"
+                      required
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="seat_number">رقم الجلوس</label>
+                    <input type="text" id="seat_number" name="seat_number" required />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="register-icon">
+                    <label for="qualification_attachment">
+                        <i class="fas fa-file-upload fa-2x"></i> <!-- Added 'fa-2x' for larger icon -->
+                        <p>إرفق صورة الثانوي</p>
+                    </label>
+                  </div>
+                  <!-- <input type="file" id="qualification_attachment" name="qualification_attachment" required /> -->
+                </div>
+                </div>
+                <!-- third row -->
+
+                </section>
+
+
+
+                <section>
+                <!-- four row  بيانات الهوية  -->
+                <div class="progress-container">
+                <label for="id_data" class="personal-data">
+                    <p>بيانات الهوية</p>
+                </label>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="id_type">نوع الهوية</label>
+                    <select id="id_type" name="id_type">
+                      <option value="" disabled selected>اختر نوع الهوية</option>
+                      <option value="">بطافة شخصية</option>
+                      <option value="">جواز سفر</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="id_location">جهة الإصدار</label>
+                    <input type="text" id="id_location" name="id_location" required />
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="id_number">رقم الهوية</label>
+                    <input type="text" id="id_number" name="id_number" required />
+                  </div>
+                  <div class="form-group">
+                    <label for="id_issue_date">تاريخ الإصدار</label>
+                    <input
+                      type="date"
+                      id="id_issue_date"
+                      name="id_issue_date"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="register-icon">
+                        <label for="id_attachment">
+                            <i class="fas fa-file-upload fa-2x"></i> <!-- Added 'fa-2x' for larger icon -->
+                            <p>إرفق صورة الهوية</p>
+                        </label>
+                    </div>
+                  <!-- <input type="file" id="id_attachment" name="id_attachment" required /> -->
+              </div>
+              
+                </div>
+
+                <!-- four row -->
+                 
+                 <!-- five row -->
+                <div class="progress-container">
+                  <div class="form-group">
+                    <label for="how_did_you_hear" class="personal-data" >
+                      <p>
+                      كيف عرفت عن الجامعة
+                      </p>
+                  </label>
+                  <select id="how_did_you_hear" name="how_did_you_hear">
+                    <option value="" disabled selected></option>
+                    <option value="">من صديق</option>
+                    <!-- Options -->
+                  </select>
+                  </div>
+                  <br/>
+                </form>
+              <!-- /registration-form -->
+  
+             <!-- Some Conditions -->
+             <div class="form-row">
+                  <div class="form-check">
+                    <label>
+                      <input type="checkbox" name="agree" required />
+                      <a href="#" onclick="showConditions(event)">الموافقة على سياسة القبول والتسجيل</a>
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <label>
+                      <input type="checkbox" name="robot" required /> I'm not a robot
+                    </label>
+                  </div>
+             </div>
+             <!-- /Some Conditions -->
+                
+             <!-- button -->
+         
+             <div class="btn-wrapper">
+              <button class="btn" onclick="refreshPage()">تسجيل</button>
+            </div>
+
+                </section>
+
+          
+            <!-- Modal -->
+            <div id="conditionsModal" class="modal">
+              <div class="modal-content">
+                <span class="close" onclick="closeConditions()">&times;</span>
+                <h2>شروط القبول والتسجيل</h2>
+                <h3>اللوائح الأكاديمية:</h3>
+                <ol>
+                  <li>
+                    يسمح بالتحويل من تخصص إلى أخر خلال اسبوعين من بدء الدراسة بحسب قواعد
+                    لائحة شئون الطلاب الموحدة.
+                  </li>
+                  <li>
+                    يحق للطلبة وقف القيد بعد اجتياز السنة الأولى بنجاح خلال أسبوعين من
+                    بداية العام الدراسي التالي.
+                  </li>
+                  <li>
+                    الالتزام باللوائح والانظمة الأكاديمية، والالتزام بحضور المحاضرات
+                    (النظرية والعملية والحقلية والسريرية).
+                  </li>
+                  <li>
+                    يُنذر الطالبـــة إذا بلغت نسبة الغياب 25% من إجمالي محاضرات المقرر
+                    ويُبلغ ولي الأمر إذا تجاوز أكثر من ذلك.
+                  </li>
+                  <li>
+                    يحرم الطالبـــة من الامتحانات النهائية للمقررات إذا وصلت نسبة الغياب
+                    50% في المُقرر بدون عذر مقبول.
+                  </li>
+                  <li>
+                    تُعقد الامتحانات التكميلية خلال الإجازة الصيفية وقبل العام الدراسي
+                    التالي للذين لديهم اقل من أربع مُقررات رسوب في العام.
+                  </li>
+                  <li>
+                    لا يسمح بانتقال الطلبة الى مستوى أعلى إذا تجاوزت مقررات الرسوب/الغير
+                    مقاصة أكثر من 3 مقررات من المستويات السابقة. (الطلبة المقيدون في
+                    برنامج وزارة الصحة يشترط عليهم النجاح بجميع المقررات للانتقال إلى
+                    مستوى أعلى)
+                  </li>
+                  <li>F
+                    على الطلبة قراءة واستيعاب لائحة شؤون الطلاب المودع نسخة منها في
+                    المكتبة للاطلاع على بقية اللوائح والانظمة.
+                  </li>
+                  <li>
+                    عدم المعرفة باللوائح والأنظمة الاكاديمية لا تعطي الطلبة حق الاعتراض
+                    على تطبيقها.
+                  </li>
+                </ol>
+                <h3>الرســـوم:</h3>
+                <ol>
+                  <li>
+                    رسوم التسجيل لمرة واحدة فقط، رسوم الأنشطة سنوياً، رسوم البطاقة
+                    الأكاديمية فصلياً وتُسدد بداية كل فصل دراسي.
+                  </li>
+                  <li>
+                    رسوم التسجيل والأنشطة والبطاقة لا ترد مهما كانت الأسباب، وتعاد
+                    الرسوم الدراسية كاملة إذا أنسحب الطالب قبل بدء الدراسة.
+                  </li>
+                  <li>
+                    في حالة الانسحاب بعد بدء الدراسة في الجامعة تخصم 5% من الرسوم
+                    السنوية عن كل أسبوع من بدء الدراسة أو من بعد التسجيل، وتُلغى كافة
+                    التخفيضات التي أستحقها الطالبـــة المفصول/المُنسحب في الفصول
+                    الدراسية السابقة.
+                  </li>
+                  <li>
+                    يتم تسديد الرسوم الدراسية السنوية على 2-4 أقساط، الطالب غير المُسدد
+                    كامل الرسوم السنوية:
+                    <ul>
+                      <li>(أ) يُحرم من دخول امتحانات نهائية الفصل الدراسي.</li>
+                      <li>
+                        (ب) تلغى أي تخفيضات او منح جزئية حصل عليه الطالب شاملاً
+                        المُرسلين بموجب عقود مع الجامعة.
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    الجهات المرتبطة مع الجامعة بعقود يخضع طلابها لكافة لوائح الجامعة
+                    وشروط العقد ساري المفعول.
+                  </li>
+                  <li>
+                    يحصل الطالبـــة على تخفيض حال سداد الرسوم الدراسية مقدماً خلال
+                    اسبوعين من بداية العام أو الفصل الدراسي.
+                  </li>
+                  <li>
+                    الطلبة الذين عليهم تدريب سريري في المستشفيات أو العيادات يضاف عليهم
+                    رسوم رمزية حسب ما يتقرر في سنة التدريب.
+                  </li>
+                  <li>
+                    أي تخفيض او إعفاء من الرسوم الدراسية (منح) لا تشمل الرسوم المعملية
+                    والتطبيقية.
+                  </li>
+                  <li>
+                    لا يُمنح الطالب الخريج إفادة تخرج ولا تُرسل وثائقه للتعميد إلا بعد
+                    استكمال برنامج التدريب وتعبئة نماذج إخلاء طرف من الجامعة وسدد كافة
+                    الرسوم.
+                  </li>
+                </ol>
+                <button onclick="closeConditions()">إغلاق</button>
+              </div>
+            </div>
+           <!-- /button -->
+            </div>
+
+        </div>
+        <!-- /container -->
+    
+    <script src="script.js"></script>
+    
+</body>
+</html>
