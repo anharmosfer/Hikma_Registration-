@@ -1,0 +1,433 @@
+
+
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>استمارة طلب تسجيل</title>
+  <!-- External CSS Libraries -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Custom CSS Files -->
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/style1.css" />
+</head>
+
+<body>
+  <!-- First Section: Branch and College Selection -->
+  <section id="branch-college-section" class="branch-college-section">
+    <div class="logo-container">
+      <img src="image/fb-logo.jpg" alt="Logo">
+    </div>
+    <div class="form-container">
+      <div class="form-fields">
+        <div class="form-field">
+          <label for="branch">
+            <h5> الفرع : </h5>
+          </label>
+          <select id="branch" name="branch" onchange="validateForm()">
+            <option value="" disabled selected>اختر الفرع</option>
+            <option value="sanaa">فرع صنعاء</option>
+            <option value="houban">فرع الحوبان</option>
+            <option value="dhamar">فرع ذمار</option>
+            <option value="taiz">فرع تعز</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label for="college">
+            <h5> الكلية :</h5>
+          </label>
+          <select id="college" name="college" onchange="validateForm()">
+            <option value="" disabled selected>اختر الكلية</option>
+            <option value="institute">معهد الجامعة</option>
+            <option value="medical">كلية العلوم الطبية</option>
+            <option value="engineering">كلية العلوم والهندسة</option>
+            <option value="administration">كلية العلوم الإدارية والإنسانية</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label for="department">
+            <h5>القسم :</h5>
+          </label>
+          <select id="department" name="department" onchange="validateForm()">
+            <option value="" disabled selected>اختر القسم</option>
+          </select>
+        </div>
+      </div>
+      <!-- Initially disabled button -->
+      <label for="toggle2" class="next-button disabled" id="nextButton">التالي</label>
+    </div>
+  </section>
+
+  <!-- Main Form (Hidden Initially) -->
+  <div id="registration-form" style="display: none;">
+    <!-- Container for Form Sections -->
+    <div class="container">
+      <!-- Sub-title -->
+      <div class="sub-title">
+        <h4 id="dynamic-text">
+          قم بتعبئة كافة البيانات المطلوبة كما ورد بالنص في إستمارة الثانوية العامة
+        </h4>
+      </div>
+      <!-- Registration Form -->
+      <form id="registration-form">
+        <!-- Tabs for Navigation -->
+        <div class="tabs">
+          <input type="radio" id="tab1" name="tab-control" checked>
+          <input type="radio" id="tab2" name="tab-control">
+          <input type="radio" id="tab3" name="tab-control">
+
+          <!-- Tab Navigation Buttons -->
+          <div class="template-demo d-flex flex-row-reverse flex-wrap">
+            <ul>
+              <li title="Personal Information">
+                <label for="tab1" role="button" onclick="updateText('tab1')">
+                  <i class="fa fa-info-circle" aria-hidden="true"></i>
+                  <br><span>البيانات الشخصية</span>
+                </label>
+              </li>
+              <li title="Education Level">
+                <label for="tab2" role="button" onclick="updateText('tab2')">
+                  <i class="fa fa-check-square" aria-hidden="true"></i>
+                  <br><span>بيانات المؤهل السابق</span>
+                </label>
+              </li>
+              <li title="Attendance">
+                <label for="tab3" role="button" onclick="updateText('tab3')">
+                  <i class="fa fa-address-card" aria-hidden="true"></i>
+                  <br><span>بيانات الهوية</span>
+                </label>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Tab Content Sections -->
+          <div class="content">
+            <!-- Section 1: Personal Information -->
+            <section class="active">
+              <div class="progress-container">
+                <label for="previous_qualification" class="personal-data">
+                  <p>البيانات الشخصية</p>
+                </label>
+                <!-- Personal Information Inputs -->
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="Arabicname">الأسم العربي</label>
+                    <input id="input1" name="Arabicname" type="text" value="" placeholder="الأسم الرباعي باللغة العربية ....." oninput="validateArabicName(event)">
+                    <div class="error-message" id="arabicNameError" style="display:none; color:red;">
+                      يجب إدخال الاسم الرباعي على الأقل
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="Englishname">الأسم الإنجليزي</label>
+                    <input id="input2" name="EnglishName" type="text" value="" placeholder="الأسم باللغة الإنجليزية ......">
+                    <div class="error-message" data-field="EnglishName" data-validator="notEmpty">مطلوب الاسم بالانجليزي </div>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label>الجنس</label>
+                    <div class="gender-options">
+                      <label for="male">
+                        <input type="radio" id="male" name="gender" value="male">
+                        ذكر
+                      </label>
+                      <label for="female">
+                        <input type="radio" id="female" name="gender" value="female">
+                        أنثى
+                      </label>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="nationality">الجنسية</label>
+                    <select id="nationality" name="nationality" onchange="updateProgress()">
+                      <option value="" disabled selected>اختر الجنسية</option>
+                      <option value="Yemeni">يمني</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="birth_place">مكان الميلاد</label>
+                    <select id="birth_place" name="birth_place" onchange="updateProgress()">
+                      <option value="" disabled selected>اختر مكان الميلاد......</option>
+                      <option value="">صنعاء</option>
+                      <option value="">تعز</option>
+                      <option value="">الحديدة</option>
+                      <option value="">حضرموت</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="birth_date">تاريخ الميلاد</label>
+                    <input type="date" id="birth_date" name="birth_date" required onchange="updateProgress()" />
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="current_address">العنوان الحالي</label>
+                    <input id="input2" name="adress" type="text" value="" placeholder=" يرجى إدخال عنوانك الحالي بشكل صحيح.....">
+                    <div class="error-message" data-field="EnglishName" data-validator="notEmpty"> يرجى عدم ترك حقل العنوان فارغًا</div>
+                  </div>
+                  <div class="form-group">
+                    <label for="student_phone">جوال الطالب</label>
+                    <input id="input2" name="student_phone" type="number" value="" placeholder="الجوال الخاص بالطالب.....">
+                    <div class="error-message" data-field="EnglishName" data-validator="notEmpty">يرجى إدخال رقم الجوال المتاح</div>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="guardian_phone">جوال ولي الأمر</label>
+                    <input id="input2" name="phone" type="number" value="" placeholder="الجوال الخاص بولي امر الطالب.....">
+                    <div class="error-message" data-field="EnglishName" data-validator="notEmpty">ادخل رقم ولي الامر المتاح</div>
+                  </div>
+                  <div class="form-group">
+                    <label for="whatsapp">رقم الواتس</label>
+                    <input id="input2" name="another_phone" type="number" value="" placeholder="رقم الواتس الخاص بك.....">
+                    <div class="error-message" data-field="EnglishName" data-validator="notEmpty"> يرجى إدخال رقم واتساب صحيح</div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- Section 2: Education Level -->
+            <section>
+              <div class="progress-container">
+                <label for="previous_qualification" class="personal-data">
+                  <p>بيانات المؤهل السابق</p>
+                </label>
+                <!-- Education Level Inputs -->
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="previous_qualification">نوع الثانوية</label>
+                    <select id="previous_qualification" name="previous_qualification">
+                      <option value="Scientific Section">اختر نوع الثانوية.....</option>
+                      <option value="Scientific Section">ثانوية عامة- علمي</option>
+                      <option value="Literary Section">ثانوية عامة- أدبي</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="school_name">مكان الحصول عليه مدرسة:</label>
+                    <input type="text" id="school_name" name="school_name" placeholder="اسم المدرسة...." required />
+                  </div>
+                  <div class="form-group">
+                    <label for="qualification_year">العام الدراسي</label>
+                    <select id="qualification_year" name="qualification_year">
+                      <option value="">2023-2022</option>
+                      <option value="">2022-2021</option>
+                      <option value="">2021-2020</option>
+                      <option value="">2020-2019</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="qualification_score">المجموع</label>
+                    <input type="number" id="qualification_score" name="qualification_score" placeholder="مجموع الثانوية العامة" required />
+                  </div>
+                  <div class="form-group">
+                    <label for="qualification_average">النسبة المئوية</label>
+                    <input type="number" id="qualification_average" name="qualification_average" placeholder="المعدل...." required />
+                  </div>
+                  <div class="form-group">
+                    <label for="seat_number">رقم الجلوس</label>
+                    <input type="number" id="seat_number" name="seat_number" required />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="register-icon">
+                    <label for="qualification_attachment">
+                      <i class="fas fa-file-upload fa-2x"></i> <!-- Added 'fa-2x' for larger icon -->
+                      <p>إرفق صورة الثانوي</p>
+                    </label>
+                    <input type="file" id="qualification_attachment" name="qualification_attachment" required />
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- Section 3: Identity Information -->
+            <section>
+              <div class="progress-container">
+                <label for="id_data" class="personal-data">
+                  <p>بيانات الهوية</p>
+                </label>
+                <!-- Identity Information Inputs -->
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="id_type">نوع الهوية</label>
+                    <select id="id_type" name="id_type">
+                      <option value="" disabled selected>اختر نوع الهوية...</option>
+                      <option value="">بطاقة شخصية</option>
+                      <option value="">جواز سفر</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="id_location">جهة الإصدار</label>
+                    <input type="text" id="id_location" name="id_location" placeholder="مكان الحصول عليها..." required />
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="id_number">رقم الهوية</label>
+                    <input type="number" id="id_number" name="id_number" required />
+                  </div>
+                  <div class="form-group">
+                    <label for="id_issue_date">تاريخ الإصدار</label>
+                    <input type="date" id="id_issue_date" name="id_issue_date" required />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="register-icon">
+                    <label for="qualification_attachment">
+                      <i class="fas fa-file-upload fa-2x"></i> <!-- Added 'fa-2x' for larger icon -->
+                      <p>إرفق صورة الهوية</p>
+                    </label>
+                    <input type="file" id="qualification_attachment" name="qualification_attachment" required />
+                  </div>
+                </div>
+              </div>
+                          <!-- Conditions and Agreement -->
+            <div class="form-row">
+              <div class="form-check">
+                <label>
+                  <input type="checkbox" name="agree" required />
+                  <a href="#" onclick="showConditions(event)">الموافقة على سياسة القبول والتسجيل</a>
+                </label>
+              </div>
+              <div class="form-check">
+                <label>
+                  <input type="checkbox" name="robot" required /> I'm not a robot
+                </label>
+              </div>
+            </div>
+              <!-- Submit Button -->
+              <div class="btn-wrapper">
+                <button class="btn" onclick="refreshPage()">تسجيل</button>
+              </div>
+            </section>
+
+            <!-- Steps Section -->
+            <div class="steps">
+              <span class="circle active">1</span>
+              <span class="circle">2</span>
+              <span class="circle">3</span>
+              <div class="progress-bar">
+                  <span class="indicator"></span>
+              </div>
+          </div> 
+          <!-- Buttons to navigate through the steps -->
+          <div class="buttons">
+              <button id="prev" class="btn-prev" style="display: none;">Prev</button>
+              <button id="next" class="btn-next">Next</button>
+          </div>      
+          </div>
+        </div>
+      </form>
+
+      <!-- Modal for Conditions -->
+      <div id="conditionsModal" class="modal">
+        <div class="modal-content">
+          <span class="close" onclick="closeConditions()">&times;</span>
+          <h2>شروط القبول والتسجيل</h2>
+          <h3>اللوائح الأكاديمية:</h3>
+          <ol>
+            <li>
+              يسمح بالتحويل من تخصص إلى أخر خلال اسبوعين من بدء الدراسة بحسب قواعد
+              لائحة شئون الطلاب الموحدة.
+            </li>
+            <li>
+              يحق للطلبة وقف القيد بعد اجتياز السنة الأولى بنجاح خلال أسبوعين من
+              بداية العام الدراسي التالي.
+            </li>
+            <li>
+              الالتزام باللوائح والانظمة الأكاديمية، والالتزام بحضور المحاضرات
+              (النظرية والعملية والحقلية والسريرية).
+            </li>
+            <li>
+              يُنذر الطالبـــة إذا بلغت نسبة الغياب 25% من إجمالي محاضرات المقرر
+              ويُبلغ ولي الأمر إذا تجاوز أكثر من ذلك.
+            </li>
+            <li>
+              يحرم الطالبـــة من الامتحانات النهائية للمقررات إذا وصلت نسبة الغياب
+              50% في المُقرر بدون عذر مقبول.
+            </li>
+            <li>
+              تُعقد الامتحانات التكميلية خلال الإجازة الصيفية وقبل العام الدراسي
+              التالي للذين لديهم اقل من أربع مُقررات رسوب في العام.
+            </li>
+            <li>
+              لا يسمح بانتقال الطلبة الى مستوى أعلى إذا تجاوزت مقررات الرسوب/الغير
+              مقاصة أكثر من 3 مقررات من المستويات السابقة. (الطلبة المقيدون في
+              برنامج وزارة الصحة يشترط عليهم النجاح بجميع المقررات للانتقال إلى
+              مستوى أعلى)
+            </li>
+            <li>F
+              على الطلبة قراءة واستيعاب لائحة شؤون الطلاب المودع نسخة منها في
+              المكتبة للاطلاع على بقية اللوائح والانظمة.
+            </li>
+            <li>
+              عدم المعرفة باللوائح والأنظمة الاكاديمية لا تعطي الطلبة حق الاعتراض
+              على تطبيقها.
+            </li>
+          </ol>
+          <h3>الرســـوم:</h3>
+          <ol>
+            <li>
+              رسوم التسجيل لمرة واحدة فقط، رسوم الأنشطة سنوياً، رسوم البطاقة
+              الأكاديمية فصلياً وتُسدد بداية كل فصل دراسي.
+            </li>
+            <li>
+              رسوم التسجيل والأنشطة والبطاقة لا ترد مهما كانت الأسباب، وتعاد
+              الرسوم الدراسية كاملة إذا أنسحب الطالب قبل بدء الدراسة.
+            </li>
+            <li>
+              في حالة الانسحاب بعد بدء الدراسة في الجامعة تخصم 5% من الرسوم
+              السنوية عن كل أسبوع من بدء الدراسة أو من بعد التسجيل، وتُلغى كافة
+              التخفيضات التي أستحقها الطالبـــة المفصول/المُنسحب في الفصول
+              الدراسية السابقة.
+            </li>
+            <li>
+              يتم تسديد الرسوم الدراسية السنوية على 2-4 أقساط، الطالب غير المُسدد
+              كامل الرسوم السنوية:
+              <ul>
+                <li>(أ) يُحرم من دخول امتحانات نهائية الفصل الدراسي.</li>
+                <li>
+                  (ب) تلغى أي تخفيضات او منح جزئية حصل عليه الطالب شاملاً
+                  المُرسلين بموجب عقود مع الجامعة.
+                </li>
+              </ul>
+            </li>
+            <li>
+              الجهات المرتبطة مع الجامعة بعقود يخضع طلابها لكافة لوائح الجامعة
+              وشروط العقد ساري المفعول.
+            </li>
+            <li>
+              يحصل الطالبـــة على تخفيض حال سداد الرسوم الدراسية مقدماً خلال
+              اسبوعين من بداية العام أو الفصل الدراسي.
+            </li>
+            <li>
+              الطلبة الذين عليهم تدريب سريري في المستشفيات أو العيادات يضاف عليهم
+              رسوم رمزية حسب ما يتقرر في سنة التدريب.
+            </li>
+            <li>
+              أي تخفيض او إعفاء من الرسوم الدراسية (منح) لا تشمل الرسوم المعملية
+              والتطبيقية.
+            </li>
+            <li>
+              لا يُمنح الطالب الخريج إفادة تخرج ولا تُرسل وثائقه للتعميد إلا بعد
+              استكمال برنامج التدريب وتعبئة نماذج إخلاء طرف من الجامعة وسدد كافة
+              الرسوم.
+            </li>
+          </ol>
+          <button onclick="closeConditions()">إغلاق</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- External JavaScript File -->
+    <script src="js/script.js"></script>
+</body>
+
+</html>
